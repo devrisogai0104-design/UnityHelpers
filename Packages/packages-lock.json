@@ -1,7 +1,13 @@
 {
   "dependencies": {
     "com.ircore.unityhelpers": {
-      "version": "file:IRCore.UnityHelpers",
+      "version": "file:com.ircore.unityhelpers",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.merry-yellow.code-assist": {
+      "version": "file:com.merry-yellow.code-assist",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
