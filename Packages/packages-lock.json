@@ -20,7 +20,9 @@
       "version": "file:com.ircore.unityhelpers",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.cysharp.r3": "1.1.10"
+      }
     },
     "com.merry-yellow.code-assist": {
       "version": "file:com.merry-yellow.code-assist",

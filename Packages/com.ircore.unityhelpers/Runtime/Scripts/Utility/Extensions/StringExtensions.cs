@@ -2,55 +2,58 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-public static class StringExtensions
+namespace IRCore.UnityHelpers
 {
-    /// <summary>
-    /// Unicode 文字列から Shift-JIS 文字列に変換して返す
-    /// </summary>
-    public static string ToShiftJis(this string unicodeStrings)
+    public static class StringExtensions
     {
-        var unicode = Encoding.Unicode;
-        var unicodeByte = unicode.GetBytes(unicodeStrings);
-        var s_jis = Encoding.GetEncoding("shift_jis");
-        var s_jisByte = Encoding.Convert(unicode, s_jis, unicodeByte);
-        var s_jisChars = new char[s_jis.GetCharCount(s_jisByte, 0, s_jisByte.Length)];
-        s_jis.GetChars(s_jisByte, 0, s_jisByte.Length, s_jisChars, 0);
-        return new string(s_jisChars);
-    }
-
-    /// <summary>
-    /// 文字列を指定した文字数で分割する
-    /// </summary>
-    public static string[] SubstringAtCount(this string self, int count)
-    {
-        var result = new List<string>();
-        var length = (int)Math.Ceiling((double)self.Length / count);
-
-        for (int i = 0; i < length; i++)
+        /// <summary>
+        /// Unicode 文字列から Shift-JIS 文字列に変換して返す
+        /// </summary>
+        public static string ToShiftJis(this string unicodeStrings)
         {
-            int start = count * i;
-            if (self.Length <= start)
-            {
-                break;
-            }
-            if (self.Length < start + count)
-            {
-                result.Add(self.Substring(start));
-            }
-            else
-            {
-                result.Add(self.Substring(start, count));
-            }
+            var unicode = Encoding.Unicode;
+            var unicodeByte = unicode.GetBytes(unicodeStrings);
+            var s_jis = Encoding.GetEncoding("shift_jis");
+            var s_jisByte = Encoding.Convert(unicode, s_jis, unicodeByte);
+            var s_jisChars = new char[s_jis.GetCharCount(s_jisByte, 0, s_jisByte.Length)];
+            s_jis.GetChars(s_jisByte, 0, s_jisByte.Length, s_jisChars, 0);
+            return new string(s_jisChars);
         }
 
-        return result.ToArray();
-    }
+        /// <summary>
+        /// 文字列を指定した文字数で分割する
+        /// </summary>
+        public static string[] SubstringAtCount(this string self, int count)
+        {
+            var result = new List<string>();
+            var length = (int)Math.Ceiling((double)self.Length / count);
 
-    /// <summary>
-    /// 文字列内の改行文字を削除した文字列を返す
-    /// </summary>
-    public static string RemoveNewLine(this string self)
-    {
-        return self.Replace("\r", "").Replace("\n", "");
+            for (int i = 0; i < length; i++)
+            {
+                int start = count * i;
+                if (self.Length <= start)
+                {
+                    break;
+                }
+                if (self.Length < start + count)
+                {
+                    result.Add(self.Substring(start));
+                }
+                else
+                {
+                    result.Add(self.Substring(start, count));
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        /// <summary>
+        /// 文字列内の改行文字を削除した文字列を返す
+        /// </summary>
+        public static string RemoveNewLine(this string self)
+        {
+            return self.Replace("\r", "").Replace("\n", "");
+        }
     }
 }

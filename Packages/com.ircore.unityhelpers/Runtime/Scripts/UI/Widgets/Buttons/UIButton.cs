@@ -2,64 +2,95 @@ using R3;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+namespace IRCore.UnityHelpers
 {
-    public Observable<Unit> OnClickAsObservable => _onClickSubject.AsObservable();
-    public Observable<Unit> OnDownAsObservable => _onDownSubject.AsObservable();
-    public Observable<Unit> OnUpAsObservable => _onUpSubject.AsObservable();
-    public Observable<Unit> OnEnterAsObservable => _onEnterSubject.AsObservable();
-    public Observable<Unit> OnExitAsObservable => _onExitSubject.AsObservable();
-    public ReadOnlyReactiveProperty<bool> Interactable => _interactable;
-
-    [Header("Settings")]
-    [SerializeField]
-    private bool m_initInteractable;
-
-    #region Field
-    private Subject<Unit> _onClickSubject = new();
-    private Subject<Unit> _onDownSubject = new();
-    private Subject<Unit> _onUpSubject = new();
-    private Subject<Unit> _onEnterSubject = new();
-    private Subject<Unit> _onExitSubject = new();
-    private ReactiveProperty<bool> _interactable = new();
-    #endregion
-
-    public void OnPointerClick(PointerEventData eventData)
+    public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        if (!_interactable.CurrentValue) return;
+        public Observable<Unit> OnClickAsObservable => _onClickSubject.AsObservable();
+        public Observable<Unit> OnDownAsObservable => _onDownSubject.AsObservable();
+        public Observable<Unit> OnUpAsObservable => _onUpSubject.AsObservable();
+        public Observable<Unit> OnEnterAsObservable => _onEnterSubject.AsObservable();
+        public Observable<Unit> OnExitAsObservable => _onExitSubject.AsObservable();
+        public ReadOnlyReactiveProperty<bool> Interactable => _interactable;
 
-        _onClickSubject?.OnNext(Unit.Default);
-    }
+        [Header("BaseSettings")]
+        [SerializeField]
+        protected bool m_initInteractable = true;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (!_interactable.CurrentValue) return;
+        #region Field
+        protected readonly Subject<Unit> _onClickSubject = new();
+        protected readonly Subject<Unit> _onDownSubject = new();
+        protected readonly Subject<Unit> _onUpSubject = new();
+        protected readonly Subject<Unit> _onEnterSubject = new();
+        protected readonly Subject<Unit> _onExitSubject = new();
+        protected readonly ReactiveProperty<bool> _interactable = new();
+        #endregion
 
-        _onDownSubject?.OnNext(Unit.Default);
-    }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (!_interactable.CurrentValue) return;
+        protected virtual void Awake()
+        {
+            Initialize();
+        }
 
-        _onUpSubject?.OnNext(Unit.Default);
-    }
+        protected virtual void OnDestroy()
+        {
+            _onClickSubject.OnCompleted();
+            _onClickSubject.Dispose();
+            _onDownSubject.Dispose();
+            _onUpSubject.Dispose();
+            _onEnterSubject.Dispose();
+            _onExitSubject.Dispose();
+            _interactable.Dispose();
+        }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (!_interactable.CurrentValue) return;
+        public virtual void OnPointerClick(PointerEventData eventData)
+        {
+            if (!_interactable.CurrentValue) return;
 
-        _onEnterSubject?.OnNext(Unit.Default);
-    }
+            _onClickSubject.OnNext(Unit.Default);
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!_interactable.CurrentValue) return;
+        public virtual void OnPointerDown(PointerEventData eventData)
+        {
+            if (!_interactable.CurrentValue) return;
 
-        _onExitSubject?.OnNext(Unit.Default);
-    }
+            _onDownSubject.OnNext(Unit.Default);
+        }
+        public virtual void OnPointerUp(PointerEventData eventData)
+        {
+            if (!_interactable.CurrentValue) return;
 
-    public void SetInteractable(bool interactable)
-    {
-        _interactable.Value = interactable;
+            _onUpSubject.OnNext(Unit.Default);
+        }
+
+        public virtual void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!_interactable.CurrentValue) return;
+
+            _onEnterSubject.OnNext(Unit.Default);
+        }
+
+        public virtual void OnPointerExit(PointerEventData eventData)
+        {
+            if (!_interactable.CurrentValue) return;
+
+            _onExitSubject.OnNext(Unit.Default);
+        }
+
+        /// <summary>
+        /// インタラクティブ状態を設定する
+        /// </summary>
+        /// <param name="interactable"></param>
+        public virtual void SetInteractable(bool interactable)
+        {
+            _interactable.Value = interactable;
+        }
+
+        #region Initialize
+        protected virtual void Initialize()
+        {
+            //  インタラクティブ設定を行う
+            SetInteractable(m_initInteractable);
+        }
+        #endregion
     }
 }

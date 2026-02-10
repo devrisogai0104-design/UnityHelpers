@@ -1,7 +1,8 @@
 {
-    "name": "IRCore.UnityHelpers",
-    "rootNamespace": "",
+    "name": "IRCore.UnityHelpers.Samples",
+    "rootNamespace": "IRCore.UnityHelpers.Samples",
     "references": [
+        "GUID:92483f6249af0224ebdd7d7056631db5",
         "GUID:77221876cc6b8244180b96e320b1bcd4"
     ],
     "includePlatforms": [],

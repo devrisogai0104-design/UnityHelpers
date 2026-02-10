@@ -1,128 +1,131 @@
 using UnityEngine;
 
-public static class TransformExtensions
+namespace IRCore.UnityHelpers
 {
-    /// <summary> X軸方向に移動する </summary>
-    public static void TranslateX(this Transform self, float x) => self.Translate(x, 0, 0);
+    public static class TransformExtensions
+    {
+        /// <summary> X軸方向に移動する </summary>
+        public static void TranslateX(this Transform self, float x) => self.Translate(x, 0, 0);
 
-    /// <summary> Y軸方向に移動する </summary>
-    public static void TranslateY(this Transform self, float y) => self.Translate(0, y, 0);
+        /// <summary> Y軸方向に移動する </summary>
+        public static void TranslateY(this Transform self, float y) => self.Translate(0, y, 0);
 
-    /// <summary> Z軸方向に移動する </summary>
-    public static void TranslateZ(this Transform self, float z) => self.Translate(0, 0, z);
+        /// <summary> Z軸方向に移動する </summary>
+        public static void TranslateZ(this Transform self, float z) => self.Translate(0, 0, z);
 
-    // --- Position ---
+        // --- Position ---
 
-    /// <summary> X座標を設定する </summary>
-    public static void SetPositionX(this Transform transform, float x) =>
-        transform.position = new Vector3(x, transform.position.y, transform.position.z);
+        /// <summary> X座標を設定する </summary>
+        public static void SetPositionX(this Transform transform, float x) =>
+            transform.position = new Vector3(x, transform.position.y, transform.position.z);
 
-    /// <summary> Y座標を設定する </summary>
-    public static void SetPositionY(this Transform transform, float y) =>
-        transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        /// <summary> Y座標を設定する </summary>
+        public static void SetPositionY(this Transform transform, float y) =>
+            transform.position = new Vector3(transform.position.x, y, transform.position.z);
 
-    /// <summary> Z座標を設定する </summary>
-    public static void SetPositionZ(this Transform transform, float z) =>
-        transform.position = new Vector3(transform.position.x, transform.position.y, z);
+        /// <summary> Z座標を設定する </summary>
+        public static void SetPositionZ(this Transform transform, float z) =>
+            transform.position = new Vector3(transform.position.x, transform.position.y, z);
 
-    /// <summary> X座標を加算する </summary>
-    public static void AddPositionX(this Transform transform, float x) => transform.SetPositionX(x + transform.position.x);
+        /// <summary> X座標を加算する </summary>
+        public static void AddPositionX(this Transform transform, float x) => transform.SetPositionX(x + transform.position.x);
 
-    /// <summary> Y座標を加算する </summary>
-    public static void AddPositionY(this Transform transform, float y) => transform.SetPositionY(y + transform.position.y);
+        /// <summary> Y座標を加算する </summary>
+        public static void AddPositionY(this Transform transform, float y) => transform.SetPositionY(y + transform.position.y);
 
-    /// <summary> Z座標を加算する </summary>
-    public static void AddPositionZ(this Transform transform, float z) => transform.SetPositionZ(z + transform.position.z);
+        /// <summary> Z座標を加算する </summary>
+        public static void AddPositionZ(this Transform transform, float z) => transform.SetPositionZ(z + transform.position.z);
 
-    // --- Local Position ---
+        // --- Local Position ---
 
-    /// <summary> ローカルのX座標を設定する </summary>
-    public static void SetLocalPositionX(this Transform transform, float x) =>
-        transform.localPosition = new Vector3(x, transform.localPosition.y, transform.localPosition.z);
+        /// <summary> ローカルのX座標を設定する </summary>
+        public static void SetLocalPositionX(this Transform transform, float x) =>
+            transform.localPosition = new Vector3(x, transform.localPosition.y, transform.localPosition.z);
 
-    /// <summary> ローカルのY座標を設定する </summary>
-    public static void SetLocalPositionY(this Transform transform, float y) =>
-        transform.localPosition = new Vector3(transform.localPosition.x, y, transform.localPosition.z);
+        /// <summary> ローカルのY座標を設定する </summary>
+        public static void SetLocalPositionY(this Transform transform, float y) =>
+            transform.localPosition = new Vector3(transform.localPosition.x, y, transform.localPosition.z);
 
-    /// <summary> ローカルのZ座標を設定する </summary>
-    public static void SetLocalPositionZ(this Transform transform, float z) =>
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, z);
+        /// <summary> ローカルのZ座標を設定する </summary>
+        public static void SetLocalPositionZ(this Transform transform, float z) =>
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, z);
 
-    /// <summary> ローカルのX座標を加算する </summary>
-    public static void AddLocalPositionX(this Transform transform, float x) => transform.SetLocalPositionX(x + transform.localPosition.x);
+        /// <summary> ローカルのX座標を加算する </summary>
+        public static void AddLocalPositionX(this Transform transform, float x) => transform.SetLocalPositionX(x + transform.localPosition.x);
 
-    /// <summary> ローカルのY座標を加算する </summary>
-    public static void AddLocalPositionY(this Transform transform, float y) => transform.SetLocalPositionY(y + transform.localPosition.y);
+        /// <summary> ローカルのY座標を加算する </summary>
+        public static void AddLocalPositionY(this Transform transform, float y) => transform.SetLocalPositionY(y + transform.localPosition.y);
 
-    /// <summary> ローカルのZ座標を加算する </summary>
-    public static void AddLocalPositionZ(this Transform transform, float z) => transform.SetLocalPositionZ(z + transform.localPosition.z);
+        /// <summary> ローカルのZ座標を加算する </summary>
+        public static void AddLocalPositionZ(this Transform transform, float z) => transform.SetLocalPositionZ(z + transform.localPosition.z);
 
-    // --- Rotation (Euler) ---
+        // --- Rotation (Euler) ---
 
-    /// <summary> X軸の回転角を設定する </summary>
-    public static void SetEulerAngleX(this Transform transform, float x) =>
-        transform.eulerAngles = new Vector3(x, transform.eulerAngles.y, transform.eulerAngles.z);
+        /// <summary> X軸の回転角を設定する </summary>
+        public static void SetEulerAngleX(this Transform transform, float x) =>
+            transform.eulerAngles = new Vector3(x, transform.eulerAngles.y, transform.eulerAngles.z);
 
-    /// <summary> Y軸の回転角を設定する </summary>
-    public static void SetEulerAngleY(this Transform transform, float y) =>
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, y, transform.eulerAngles.z);
+        /// <summary> Y軸の回転角を設定する </summary>
+        public static void SetEulerAngleY(this Transform transform, float y) =>
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, y, transform.eulerAngles.z);
 
-    /// <summary> Z軸の回転角を設定する </summary>
-    public static void SetEulerAngleZ(this Transform transform, float z) =>
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, z);
+        /// <summary> Z軸の回転角を設定する </summary>
+        public static void SetEulerAngleZ(this Transform transform, float z) =>
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, z);
 
-    /// <summary> X軸の回転角を加算する </summary>
-    public static void AddEulerAngleX(this Transform transform, float x) => transform.SetEulerAngleX(transform.eulerAngles.x + x);
+        /// <summary> X軸の回転角を加算する </summary>
+        public static void AddEulerAngleX(this Transform transform, float x) => transform.SetEulerAngleX(transform.eulerAngles.x + x);
 
-    /// <summary> Y軸の回転角を加算する </summary>
-    public static void AddEulerAngleY(this Transform transform, float y) => transform.SetEulerAngleY(transform.eulerAngles.y + y);
+        /// <summary> Y軸の回転角を加算する </summary>
+        public static void AddEulerAngleY(this Transform transform, float y) => transform.SetEulerAngleY(transform.eulerAngles.y + y);
 
-    /// <summary> Z軸の回転角を加算する </summary>
-    public static void AddEulerAngleZ(this Transform transform, float z) => transform.SetEulerAngleZ(transform.eulerAngles.z + z);
+        /// <summary> Z軸の回転角を加算する </summary>
+        public static void AddEulerAngleZ(this Transform transform, float z) => transform.SetEulerAngleZ(transform.eulerAngles.z + z);
 
-    // --- Local Rotation ---
+        // --- Local Rotation ---
 
-    /// <summary> ローカルのX軸回転角を設定する </summary>
-    public static void SetLocalEulerAngleX(this Transform transform, float x) =>
-        transform.localEulerAngles = new Vector3(x, transform.localEulerAngles.y, transform.localEulerAngles.z);
+        /// <summary> ローカルのX軸回転角を設定する </summary>
+        public static void SetLocalEulerAngleX(this Transform transform, float x) =>
+            transform.localEulerAngles = new Vector3(x, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
-    /// <summary> ローカルのY軸回転角を設定する </summary>
-    public static void SetLocalEulerAngleY(this Transform transform, float y) =>
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, y, transform.localEulerAngles.z);
+        /// <summary> ローカルのY軸回転角を設定する </summary>
+        public static void SetLocalEulerAngleY(this Transform transform, float y) =>
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, y, transform.localEulerAngles.z);
 
-    /// <summary> ローカルのZ軸回転角を設定する </summary>
-    public static void SetLocalEulerAngleZ(this Transform transform, float z) =>
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, z);
+        /// <summary> ローカルのZ軸回転角を設定する </summary>
+        public static void SetLocalEulerAngleZ(this Transform transform, float z) =>
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, z);
 
-    /// <summary> ローカルのX軸回転角を加算する </summary>
-    public static void AddLocalEulerAngleX(this Transform transform, float x) => transform.SetLocalEulerAngleX(transform.localEulerAngles.x + x);
+        /// <summary> ローカルのX軸回転角を加算する </summary>
+        public static void AddLocalEulerAngleX(this Transform transform, float x) => transform.SetLocalEulerAngleX(transform.localEulerAngles.x + x);
 
-    /// <summary> ローカルのY軸回転角を加算する </summary>
-    public static void AddLocalEulerAngleY(this Transform transform, float y) => transform.SetLocalEulerAngleY(transform.localEulerAngles.y + y);
+        /// <summary> ローカルのY軸回転角を加算する </summary>
+        public static void AddLocalEulerAngleY(this Transform transform, float y) => transform.SetLocalEulerAngleY(transform.localEulerAngles.y + y);
 
-    /// <summary> ローカルのZ軸回転角を加算する </summary>
-    public static void AddLocalEulerAngleZ(this Transform transform, float z) => transform.SetLocalEulerAngleZ(transform.localEulerAngles.z + z);
+        /// <summary> ローカルのZ軸回転角を加算する </summary>
+        public static void AddLocalEulerAngleZ(this Transform transform, float z) => transform.SetLocalEulerAngleZ(transform.localEulerAngles.z + z);
 
-    // --- Scale ---
+        // --- Scale ---
 
-    /// <summary> ローカルのX軸スケールを設定する </summary>
-    public static void SetLocalScaleX(this Transform transform, float x) =>
-        transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+        /// <summary> ローカルのX軸スケールを設定する </summary>
+        public static void SetLocalScaleX(this Transform transform, float x) =>
+            transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 
-    /// <summary> ローカルのY軸スケールを設定する </summary>
-    public static void SetLocalScaleY(this Transform transform, float y) =>
-        transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);
+        /// <summary> ローカルのY軸スケールを設定する </summary>
+        public static void SetLocalScaleY(this Transform transform, float y) =>
+            transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);
 
-    /// <summary> ローカルのZ軸スケールを設定する </summary>
-    public static void SetLocalScaleZ(this Transform transform, float z) =>
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, z);
+        /// <summary> ローカルのZ軸スケールを設定する </summary>
+        public static void SetLocalScaleZ(this Transform transform, float z) =>
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, z);
 
-    /// <summary> ローカルのX軸スケールを加算する </summary>
-    public static void AddLocalScaleX(this Transform transform, float x) => transform.SetLocalScaleX(transform.localScale.x + x);
+        /// <summary> ローカルのX軸スケールを加算する </summary>
+        public static void AddLocalScaleX(this Transform transform, float x) => transform.SetLocalScaleX(transform.localScale.x + x);
 
-    /// <summary> ローカルのY軸スケールを加算する </summary>
-    public static void AddLocalScaleY(this Transform transform, float y) => transform.SetLocalScaleY(transform.localScale.y + y);
+        /// <summary> ローカルのY軸スケールを加算する </summary>
+        public static void AddLocalScaleY(this Transform transform, float y) => transform.SetLocalScaleY(transform.localScale.y + y);
 
-    /// <summary> ローカルのZ軸スケールを加算する </summary>
-    public static void AddLocalScaleZ(this Transform transform, float z) => transform.SetLocalScaleZ(transform.localScale.z + z);
+        /// <summary> ローカルのZ軸スケールを加算する </summary>
+        public static void AddLocalScaleZ(this Transform transform, float z) => transform.SetLocalScaleZ(transform.localScale.z + z);
+    }
 }
