@@ -1,11 +1,13 @@
 {
     "name": "com.ircore.unityhelpers",
     "displayName": "IRCore UnityHelpers",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "unity": "2018.4",
     "description": "Custom Package!",
     "keywords": [],
     "license": "MIT",
     "category": "",
-    "dependencies": {}
+    "dependencies": {
+        "com.cysharp.r3": "1.1.10"
+    }
 }
