@@ -12,9 +12,7 @@ namespace IRCore.UnityHelpers
         [SerializeField]
         private SeChannel m_seChannel;
 
-
         protected UIButton _button;
-        protected ISePlayer _sePlayer;
 
         protected virtual void Awake()
         {

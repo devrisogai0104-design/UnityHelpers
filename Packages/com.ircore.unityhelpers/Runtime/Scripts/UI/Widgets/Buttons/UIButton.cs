@@ -1,9 +1,11 @@
 using R3;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace IRCore.UnityHelpers
 {
+    [RequireComponent(typeof(Graphic))]
     public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
         public Observable<Unit> OnClickAsObservable => _onClickSubject.AsObservable();
@@ -35,9 +37,13 @@ namespace IRCore.UnityHelpers
         {
             _onClickSubject.OnCompleted();
             _onClickSubject.Dispose();
+            _onDownSubject.OnCompleted();
             _onDownSubject.Dispose();
+            _onUpSubject.OnCompleted();
             _onUpSubject.Dispose();
+            _onEnterSubject.OnCompleted();
             _onEnterSubject.Dispose();
+            _onExitSubject.OnCompleted();
             _onExitSubject.Dispose();
             _interactable.Dispose();
         }
