@@ -11,7 +11,7 @@ namespace IRCore.UnityHelpers.DebugManagement
             _settings = setting;
         }
 
-        public virtual bool IsActive<T>() where T : DebugModule
+        public virtual bool IsActive<T>() where T : DebugModuleBase
         {
             // 1. 全体のデバッグモードがオフなら即座に拒否
             if (!_settings.IsDebugMode) return false;
@@ -26,7 +26,7 @@ namespace IRCore.UnityHelpers.DebugManagement
             return module.IsEnabled;
         }
 
-        public virtual T GetSettings<T>() where T : DebugModule
+        public virtual T GetSettings<T>() where T : DebugModuleBase
         {
             var module = _settings.GetModule<T>();
             if (module != null) return module;

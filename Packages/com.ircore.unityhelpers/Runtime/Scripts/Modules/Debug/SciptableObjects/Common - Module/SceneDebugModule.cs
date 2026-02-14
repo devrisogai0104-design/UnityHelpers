@@ -14,7 +14,7 @@ namespace IRCore.UnityHelpers.DebugManagement
     }
 
     [CreateAssetMenu(fileName = "SceneDebugModule", menuName = "IRCore/Debug/Modules/SceneDebugModule")]
-    public class SceneDebugModule : DebugModule
+    public class SceneDebugModule : DebugModuleBase
     {
         [Header("Editor Play Mode Settings")]
         [Tooltip("再生ボタンを押した際、自動的にMasterシーンから開始するか")]

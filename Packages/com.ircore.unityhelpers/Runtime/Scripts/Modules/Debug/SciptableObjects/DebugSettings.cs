@@ -19,10 +19,10 @@ namespace IRCore.UnityHelpers.DebugManagement
 
         [Header("モジュール")]
         [SerializeField]
-        private List<DebugModule> _modules = new();
+        private List<DebugModuleBase> _modules = new();
 
         // 型をキーにしたキャッシュ
-        private readonly Dictionary<Type, DebugModule> _cache = new();
+        private readonly Dictionary<Type, DebugModuleBase> _cache = new();
 
         // 実行順に依存しないための初期化メソッド
         private void EnsureCache()
@@ -38,7 +38,7 @@ namespace IRCore.UnityHelpers.DebugManagement
             }
         }
 
-        public T GetModule<T>() where T : DebugModule
+        public T GetModule<T>() where T : DebugModuleBase
         {
             EnsureCache();
 
@@ -51,5 +51,21 @@ namespace IRCore.UnityHelpers.DebugManagement
 
         // インスペクターで値をいじった時にキャッシュをクリアする（Editor用）
         private void OnValidate() => _cache.Clear();
+
+        /// <summary>
+        /// リストの中身の差し替えを行う
+        /// </summary>
+        /// <param name="newModules"></param>
+        public void ClearAndReassignModules(System.Collections.Generic.List<DebugModuleBase> newModules)
+        {
+            // 既存のリスト（例：private List<DebugModuleBase> _modules）をクリア
+            this._modules.Clear();
+
+            // 新しくコピーされたフォルダ内のモジュールを追加
+            foreach (var m in newModules)
+            {
+                this._modules.Add(m);
+            }
+        }
     }
 }

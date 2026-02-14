@@ -40,6 +40,7 @@ namespace IRCore.UnityHelpers.Editor
             if (debugSettings == null)
             {
                 EditorSceneManager.playModeStartScene = null;
+                UnityEngine.Debug.Log("Masterロード失敗: 設定アセットが見つかりません");
                 return;
             }
 
@@ -47,6 +48,7 @@ namespace IRCore.UnityHelpers.Editor
             if (sceneModule != null && sceneModule.AutoLoadMasterScene && sceneModule.MasterSceneAsset != null)
             {
                 EditorSceneManager.playModeStartScene = sceneModule.MasterSceneAsset;
+                UnityEngine.Debug.Log($"<color=yellow>[IRCore] Master Scene Set: {sceneModule.MasterSceneAsset.name}</color>");
             }
             else
             {

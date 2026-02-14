@@ -16,20 +16,13 @@ namespace IRCore.UnityHelpers.Editor
             // 1. テンプレートフォルダの存在確認
             if (!AssetDatabase.IsValidFolder(TemplateFolderPath))
             {
-                EditorUtility.DisplayDialog("IRCore Error",
-                    $"Template folder not found at: {TemplateFolderPath}\n" +
-                    "Please make sure the path is correct.", "OK");
+                EditorUtility.DisplayDialog("Error", "Template folder not found.", "OK");
                 return;
             }
 
-            // 2. 保存先の名前と場所をユーザーに決めさせる
-            // デフォルト名を現在のテンプレートフォルダ名 + _Copy に設定
-            string defaultName = Path.GetFileName(TemplateFolderPath) + "_User";
+            // 2. 保存先を決定
             string destinationPath = EditorUtility.SaveFilePanelInProject(
-                "Copy Template Folder",
-                defaultName,
-                "",
-                "Select where to save your personal debug settings folder");
+                "Copy Template Folder", "NewDebugSettings", "", "Select save location");
 
             if (string.IsNullOrEmpty(destinationPath)) return;
 
@@ -38,44 +31,40 @@ namespace IRCore.UnityHelpers.Editor
             {
                 AssetDatabase.Refresh();
 
-                // 4. コピー先のフォルダ内にある DebugSettings を探してアクティブにする
-                string[] guids = AssetDatabase.FindAssets("t:DebugSettings", new[] { destinationPath });
+                // 4. 新しいフォルダ内の「DebugSettings」と「全Module」を取得
+                string[] allAssetPaths = AssetDatabase.FindAssets("t:UnityEngine.Object", new[] { destinationPath });
 
-                if (guids.Length > 0)
+                DebugSettings newSettings = null;
+                var newModules = new System.Collections.Generic.List<DebugModuleBase>();
+
+                foreach (var guid in allAssetPaths)
                 {
-                    string assetPath = AssetDatabase.GUIDToAssetPath(guids[0]);
-                    var newSettings = AssetDatabase.LoadAssetAtPath<DebugSettings>(assetPath);
+                    var path = AssetDatabase.GUIDToAssetPath(guid);
+                    var obj = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
 
-                    if (newSettings != null)
-                    {
-                        SceneAutoLoader.SetActiveSettings(newSettings);
+                    if (obj is DebugSettings settings) newSettings = settings;
+                    if (obj is DebugModuleBase module) newModules.Add(module);
+                }
 
-                        EditorGUIUtility.PingObject(newSettings);
-                        Selection.activeObject = newSettings;
+                // 5. 【重要】参照の付け替え
+                if (newSettings != null)
+                {
+                    // 一旦リストをクリアして、同じフォルダ内にコピーされたモジュールを登録し直す
+                    // ※DebugSettingsにModulesリストへアクセスできるメソッドや公開変数がある前提です
+                    newSettings.ClearAndReassignModules(newModules);
 
-                        UnityEngine.Debug.Log($"<color=cyan>[IRCore] Template Copied & Activated: {newSettings.name}</color>");
-                    }
+                    EditorUtility.SetDirty(newSettings);
+                    AssetDatabase.SaveAssets();
+
+                    // アクティブにする
+                    SceneAutoLoader.SetActiveSettings(newSettings);
+                    EditorGUIUtility.PingObject(newSettings);
+                    Selection.activeObject = newSettings;
+
+                    UnityEngine.Debug.Log($"<color=cyan>[IRCore] Reassigned {newModules.Count} modules to new settings.</color>");
                 }
             }
-            else
-            {
-                UnityEngine.Debug.LogError($"[IRCore] Failed to copy template from {TemplateFolderPath}");
-            }
         }
-
-        /*
-        // --- その他の既存メソッド (SetSelectedActive など) ---
-        [MenuItem("IRCore/Debug/Set Selected as Active")]
-        public static void SetSelectedActive()
-        {
-            var settings = Selection.activeObject as DebugSettings;
-            if (settings != null)
-            {
-                SceneAutoLoader.SetActiveSettings(settings);
-                UnityEngine.Debug.Log($"<color=cyan>[IRCore] Activated: {settings.name}</color>");
-            }
-        }
-        */
     }
 }
 #endif
