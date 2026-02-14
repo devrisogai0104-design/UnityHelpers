@@ -4,9 +4,9 @@ namespace IRCore.UnityHelpers.Debug
 {
     public class DebugManager : IDebugManager
     {
-        protected readonly DebugSetting _settings;
+        protected readonly DebugSettings _settings;
 
-        public DebugManager(DebugSetting setting)
+        public DebugManager(DebugSettings setting)
         {
             _settings = setting;
         }

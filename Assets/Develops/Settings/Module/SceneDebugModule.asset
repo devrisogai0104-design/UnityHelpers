@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SceneDebugModule
   m_EditorClassIdentifier: IRCore.UnityHelpers.Debug::IRCore.UnityHelpers.Debug.SceneDebugModule
   _isEnabled: 1
-  AutoLoadMasterScene: 0
-  MasterSceneAsset: {fileID: 0}
+  AutoLoadMasterScene: 1
+  MasterSceneAsset: {fileID: 102900000, guid: 4fac52f74eb93ab4d9a5502a517bce18, type: 3}
   StartMode: 0
   DesignatedSceneName: 
   RequiredSceneNames: []

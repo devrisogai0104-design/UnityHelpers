@@ -5,13 +5,17 @@ using UnityEngine;
 namespace IRCore.UnityHelpers.Debug
 {
     [CreateAssetMenu(fileName = "DebugSetting", menuName = "IRCore/Debug/DebugSetting")]
-    public class DebugSetting : ScriptableObject
+    public class DebugSettings : ScriptableObject
     {
         public bool IsDebugMode => _isDebugMode;
 
         [Header("デバッグモードのON/OFF")]
         [SerializeField] 
         private bool _isDebugMode = true;
+
+        [Header("Global Editor Settings")]
+        [Tooltip("シーンビューのデバッグオーバーレイを表示するか")]
+        public bool ShowOverlay = true;
 
         [Header("モジュール")]
         [SerializeField]
