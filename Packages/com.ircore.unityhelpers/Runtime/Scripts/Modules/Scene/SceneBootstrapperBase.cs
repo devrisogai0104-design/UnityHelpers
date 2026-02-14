@@ -1,4 +1,4 @@
-using IRCore.UnityHelpers.Debug;
+using IRCore.UnityHelpers.DebugManagement;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;

@@ -1,6 +1,6 @@
 {
     "name": "IRCore.UnityHelpers.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "IRCore.UnityHelpers.Editor",
     "references": [
         "GUID:77221876cc6b8244180b96e320b1bcd4",
         "GUID:f90b7c8785f14b54cb4e7c2ff9f62dfa"

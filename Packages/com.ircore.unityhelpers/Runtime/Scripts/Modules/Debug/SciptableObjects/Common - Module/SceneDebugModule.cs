@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IRCore.UnityHelpers.Debug
+namespace IRCore.UnityHelpers.DebugManagement
 {
     /// <summary>
     /// 開始シーンの判定モード

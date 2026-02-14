@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using IRCore.UnityHelpers.Debug;
+using IRCore.UnityHelpers.DebugManagement;
 
 namespace IRCore.UnityHelpers.Editor
 {

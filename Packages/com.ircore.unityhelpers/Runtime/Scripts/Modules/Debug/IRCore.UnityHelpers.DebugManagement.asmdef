@@ -1,6 +1,6 @@
 {
-    "name": "IRCore.UnityHelpers.Debug",
-    "rootNamespace": "IRCore.UnityHelpers.Debug",
+    "name": "IRCore.UnityHelpers.DebugManagement",
+    "rootNamespace": "IRCore.UnityHelpers.DebugManagement",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

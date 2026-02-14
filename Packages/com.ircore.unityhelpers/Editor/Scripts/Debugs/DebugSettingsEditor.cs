@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-using IRCore.UnityHelpers.Debug;
+using IRCore.UnityHelpers.DebugManagement;
 using UnityEditor;
 using UnityEngine;
 

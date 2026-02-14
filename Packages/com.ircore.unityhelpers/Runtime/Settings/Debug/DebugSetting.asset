@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: DebugSetting
   m_EditorClassIdentifier: IRCore.UnityHelpers.Debug::IRCore.UnityHelpers.Debug.DebugSettings
   _isDebugMode: 1
-  ShowOverlay: 1
   _modules:
-  - {fileID: 11400000, guid: 600ed447fa625e249b2129bfe09e874c, type: 2}
+  - {fileID: 11400000, guid: 79e3f49165e2f5b4a8c27fca3d3276c3, type: 2}

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IRCore.UnityHelpers.Debug
+namespace IRCore.UnityHelpers.DebugManagement
 {
     [CreateAssetMenu(fileName = "DebugSetting", menuName = "IRCore/Debug/DebugSetting")]
     public class DebugSettings : ScriptableObject

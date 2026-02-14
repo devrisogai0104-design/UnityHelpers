@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace IRCore.UnityHelpers.Debug
+namespace IRCore.UnityHelpers.DebugManagement
 {
     public interface IDebugManager
     {
