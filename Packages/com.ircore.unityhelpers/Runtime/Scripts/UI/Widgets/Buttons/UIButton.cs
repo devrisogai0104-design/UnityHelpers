@@ -8,11 +8,11 @@ namespace IRCore.UnityHelpers
     [RequireComponent(typeof(Graphic))]
     public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        public Observable<Unit> OnClickAsObservable => _onClickSubject.AsObservable();
-        public Observable<Unit> OnDownAsObservable => _onDownSubject.AsObservable();
-        public Observable<Unit> OnUpAsObservable => _onUpSubject.AsObservable();
-        public Observable<Unit> OnEnterAsObservable => _onEnterSubject.AsObservable();
-        public Observable<Unit> OnExitAsObservable => _onExitSubject.AsObservable();
+        public Observable<Unit> OnClick => _onClickSubject.AsObservable();
+        public Observable<Unit> OnDown => _onDownSubject.AsObservable();
+        public Observable<Unit> OnUp => _onUpSubject.AsObservable();
+        public Observable<Unit> OnEnter => _onEnterSubject.AsObservable();
+        public Observable<Unit> OnExit => _onExitSubject.AsObservable();
         public ReadOnlyReactiveProperty<bool> Interactable => _interactable;
 
         [Header("BaseSettings")]

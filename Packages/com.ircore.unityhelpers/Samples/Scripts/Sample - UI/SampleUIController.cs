@@ -12,7 +12,7 @@ namespace IRCore.UnityHelpers.Samples
 
         public void Start()
         {
-            m_button.OnClickAsObservable
+            m_button.OnClick
                 .Subscribe(_ => Debug.Log($"Button Click!"))
                 .AddTo(this);
 

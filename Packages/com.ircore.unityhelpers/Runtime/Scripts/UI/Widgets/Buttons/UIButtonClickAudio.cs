@@ -29,7 +29,7 @@ namespace IRCore.UnityHelpers
 
         protected virtual void Bind()
         {
-            _button.OnClickAsObservable
+            _button.OnClick
                 .Select(_ => m_clickSe)
                 .Where(clip => clip != null)
                 .Subscribe(clip => PlayClickSe(clip))
