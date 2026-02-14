@@ -3,7 +3,9 @@
     "rootNamespace": "IRCore.UnityHelpers.Samples",
     "references": [
         "GUID:92483f6249af0224ebdd7d7056631db5",
-        "GUID:77221876cc6b8244180b96e320b1bcd4"
+        "GUID:baa5f13e8c21f3547a93bd5be875e4dc",
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
