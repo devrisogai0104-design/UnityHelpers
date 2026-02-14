@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "DebugKeyboardActions",
+    "maps": [
+        {
+            "name": "DebugInput",
+            "id": "d04b9e7d-712e-4356-8ec3-fd37a9764153",
+            "actions": [
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "0354729c-c2b1-4fde-bda3-a8ee649d8145",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "89602f3d-ac44-4d12-872b-c73e99695abc",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap,Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
